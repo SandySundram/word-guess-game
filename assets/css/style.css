@@ -1,0 +1,28 @@
+h1{
+    font-size: 30px;
+    font-weight: bold;
+}
+#wins{
+    color: black;
+    transition: color 1s;
+}
+#losses{
+    color: black;
+    transition: color 1s;
+}
+#Top{
+    background-color: #ffffff;
+    border-bottom: 2px solid #cccccc;
+    margin-bottom: 30px;
+}
+#Header{
+    background-color: #ffffff;
+    width: 960px;
+    height: 150px;
+    margin: auto;
+    border-color: #cccccc;
+}
+img {
+    width: 960px;
+    max-height: 100%;
+}
