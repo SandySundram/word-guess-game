@@ -61,9 +61,8 @@ img {
     height: 450px;
     background-color: rgb(199, 199, 199);
     background-image: url("../images/circles-light.png");
-    background-size: 100% 100%;
+    /* background-size: 100% 100%; */
     margin-top: 10px;
     padding-top: 10px;
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
+    background-size: contain;
 }

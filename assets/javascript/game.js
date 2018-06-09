@@ -186,7 +186,7 @@ function startGame(){
             guesses = guesses - 1;
             document.getElementById("guessSoFar").innerHTML += key+" ";
             document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guesses;
-            if (guesses == 5){
+            if (guesses == 3){
                 tickerText("hint");
             }
 
@@ -226,9 +226,10 @@ function startGame(){
         }
         if (status == "hint"){
             setTimeout(function(){document.getElementById("ticker").innerHTML = "Hint: " + allPlaces[randomNum][1]},3000);
-            document.getElementById("ticker").innerHTML = "Yikes!! Only 5 guesses left. Here is a hint...";
+            document.getElementById("ticker").innerHTML = "Yikes!! Only 3 guesses left. Here is a hint...";
         }
         if (status == "won"){
+            document.getElementById("Body1").style.backgroundSize = "100% 100%";
             var winImage = "url('"+allPlaces[randomNum][2]+"')";
             console.log(winImage);
             document.getElementById("Body1").style.backgroundImage = winImage;
