@@ -20,7 +20,10 @@ function startGame(){
                     ["Rome","City","assets/images/Rome.jpg"],
                     ["Iceland","Land of fire and ice","assets/images/Iceland.jpg"],
                     ["Hawaii","Tropical Paradise","assets/images/Hawaii.jpg"],
-                    ["Frankfurt","The business and financial center of Germany","assets/images/Frankfurt.jpg"]]
+                    ["Frankfurt","The business and financial center of Germany","assets/images/Frankfurt.jpg"],
+                    ["Mumbai","Home of Bollywood","assets/images/Mumbai.jpg"],
+                    ["Sydney","The iconic Opera House","assets/images/Sydney.jpg"],
+                    ["Dar e Salam","Gateway to the Serengeti Park","assets/images/Dar.jpeg"]]
 
 
     //Generate secret word
@@ -213,7 +216,7 @@ function startGame(){
     function randomPlace(){
         //Math.random returns a number between 0 and 1
         //Math.floor rounds number down so that we have no decimals
-        randomNum = Math.floor(Math.random() * 7);
+        randomNum = Math.floor(Math.random() * 10);
         return allPlaces[randomNum];
 
     }
