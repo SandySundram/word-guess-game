@@ -17,10 +17,10 @@ function startGame(){
     var allPlaces = [["San Francisco","City by the bay","assets/images/San-Francisco.jpg"],
                     ["New York","The Big Apple","assets/images/New-York.jpg"],
                     ["Paris","City of Romance","assets/images/Paris.jpg"],
-                    ["Rome","City","image4"],
-                    ["Iceland","Land of fire and ice","image5"],
-                    ["Hawaii","Tropical Paradise","image6"],
-                    ["Frankfurt","The business and financial center of Germany","image7"]]
+                    ["Rome","City","assets/images/Rome.jpg"],
+                    ["Iceland","Land of fire and ice","assets/images/Iceland.jpg"],
+                    ["Hawaii","Tropical Paradise","assets/images/Hawaii.jpg"],
+                    ["Frankfurt","The business and financial center of Germany","assets/images/Frankfurt.jpg"]]
 
 
     //Generate secret word
@@ -53,7 +53,7 @@ function startGame(){
         // guessedWordSoFar = guessedWordSoFar.join(" ");
         document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guesses;
         // document.querySelector("#word").innerHTML = guessedWordSoFar;
-        document.querySelector("#guessSoFar").innerHTML = "Your Guesses so far: ";
+        document.querySelector("#guessSoFar").innerHTML = "";
         console.log(secretWord[0] + " rest loop");
         // document.getElementById("guessesLeft").innerHTML = "Guesses Left: ";
         // document.querySelector("#word").innerHTML = "Word: ";
@@ -211,7 +211,6 @@ function startGame(){
 
     //Function to generate random secret word
     function randomPlace(){
-        // var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
         //Math.random returns a number between 0 and 1
         //Math.floor rounds number down so that we have no decimals
         randomNum = Math.floor(Math.random() * 7);
@@ -223,7 +222,6 @@ function startGame(){
             document.getElementById("ticker").innerHTML = "Start Guessing...";
         }
         if (status == "hint"){
-            // document.getElementById("ticker").innerHTML = "Yikes!! Only 5 guesses left. Here is a hint...";
             setTimeout(function(){document.getElementById("ticker").innerHTML = "Hint: " + allPlaces[randomNum][1]},3000);
             document.getElementById("ticker").innerHTML = "Yikes!! Only 5 guesses left. Here is a hint...";
         }
