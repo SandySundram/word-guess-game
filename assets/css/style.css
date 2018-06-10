@@ -16,7 +16,7 @@ p, span{
 }
 #Header{
     background-clip: initial;
-    background: url("../images/travelHeader.jpg") -525px -520px;
+    background: url("../images/travelHeader.jpg") -335px -520px;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-weight: bold;
