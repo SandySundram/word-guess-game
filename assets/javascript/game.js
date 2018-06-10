@@ -49,18 +49,21 @@ function startGame(){
         document.querySelector("#word").innerHTML = "";
 
         for(var y=0; y<secretWord[0].length;y++){
+            
+            
             guessedWordSoFar[y] = " ";
             compare[y] = secretWord[0][y];
-            document.querySelector("#word").innerHTML += "_ " ;
+            if(secretWord[0][y] == " "){
+                document.querySelector("#word").innerHTML += "  " ;
+            }
+            else{
+                document.querySelector("#word").innerHTML += "_ " ;
+            }
+            
         }
-        // guessedWordSoFar = guessedWordSoFar.join(" ");
         document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guesses;
-        // document.querySelector("#word").innerHTML = guessedWordSoFar;
         document.querySelector("#guessSoFar").innerHTML = "";
-        console.log(secretWord[0] + " rest loop");
-        // document.getElementById("guessesLeft").innerHTML = "Guesses Left: ";
-        // document.querySelector("#word").innerHTML = "Word: ";
-        // document.querySelector("#word").innerHTML = "Your Guesses so far: ";
+        // console.log(secretWord[0] + " rest loop");
     }
     
 
@@ -73,68 +76,30 @@ function startGame(){
         var printed = 0;//to keep track a printed letter if it occurs multiple times in the same word
         key = key.toUpperCase();//make typed key uppercase for consistency
 
-        // document.getElementById("guessSoFar").innerHTML += key+" ";
         document.querySelector("#wins").style.color = "";
         document.querySelector("#losses").style.color = "";
-        
-
-        
-        // console.log(guessedWordSoFar);
-
-        //check if typed letter was already previously entered
-        // for (var i = 0; i<guessedWordSoFar.length; i++){
-        //     if (key == guessedWordSoFar[i] && key == secretWord[0][i]){
-        //         previousTyped++;
-        //         found++;
-        //         // document.getElementById("guessSoFar").innerHTML += key+" ";
-        //         console.log("checking previous in secert");
-        //         //CALL TICKER
-        //     }
-        //     else if (key == guessedWordSoFar[i] && key != secretWord[0][i]){
-        //         previousTyped++;
-        //         console.log("checking previous not in secert");
-        //     }
-        // }
-
 
 
         for (var i = 0; i<guessSoFar.length; i++){
             if (key == guessSoFar[i]){
                 previousTyped++;
                 found++;
-                // document.getElementById("guessSoFar").innerHTML += key+" ";
-                console.log("checking previous in secert");
-                //CALL TICKER
             }
         }
 
         guessSoFar.push(key);
 
-
-
-
-
-
-
-
-
-
-
-        
-        
         //check if typed letter is present in the secret word
         for(i=0;i<secretWord[0].length;i++){
             
             //if key typed matches secret word AND was not entered previously
             if (key == secretWord[0][i] && previousTyped == 0){
                 guessedWordSoFar[i] = secretWord[0][i];
-                // console.log(guessedWordSoFar);
-                // console.log(secretWord[0]);
+
                 if (printed <1){
                     document.getElementById("guessSoFar").innerHTML += key+" ";
                     printed++;
                 }
-                // document.getElementById("word").innerHTML = guessedWordSoFar  
                 
                 
                 document.getElementById("word").innerHTML = "";
@@ -142,19 +107,20 @@ function startGame(){
                     if (guessedWordSoFar[c] != " "){
                         document.getElementById("word").innerHTML += guessedWordSoFar[c];
                     }
+                    else if (guessedWordSoFar[c] == " " && secretWord[0][c] == " "){
+                        document.getElementById("word").innerHTML += "  ";
+                    }
                     else{
                         document.getElementById("word").innerHTML += "_ ";
                     }
-                    // document.getElementById("word").innerHTML += guessedWordSoFar[c];
                 }
 
 
 
                 found++;
-                // compare[i] = secretWord[0][i];
-                console.log(guessedWordSoFar);
-                console.log(compare);
-                console.log(printed);
+                // console.log(guessedWordSoFar);
+                // console.log(compare);
+                // console.log(printed);
             }
         }
         
@@ -170,23 +136,19 @@ function startGame(){
         //if guessed word is equal to secret word then post a win and reset
         if(compareCounter == compare.length){
             gameWins++;
-            // console.log(gameWins);
             document.querySelector("#wins").innerHTML = gameWins;
             var msg = new SpeechSynthesisUtterance(allPlaces[randomNum][0]);
             window.speechSynthesis.speak(msg);
             tickerText("won");
-            resetVals();
-            
+            setTimeout(resetVals, 5000);            
         }
-        
-        console.log("previous:"+previousTyped);
 
         //if typed word is not present in secret word, reduce guesses left by 1
         if (found == 0 && previousTyped == 0){
             guesses = guesses - 1;
             document.getElementById("guessSoFar").innerHTML += key+" ";
             document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guesses;
-            if (guesses == 3){
+            if (guesses == 1){
                 tickerText("hint");
             }
 
@@ -195,14 +157,9 @@ function startGame(){
         //if secret word not guessed within 10 attempts, post a loss and reset
         if (guesses == 0){
             losses++;
-            // console.log(document.querySelector("#losses").innerHTML);
             document.querySelector("#losses").innerHTML = losses;
-            // reset
             resetVals();
             tickerText("lose");
-            // document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guesses;
-            // document.querySelector("#word").innerHTML = "Word: ";
-            // document.querySelector("#word").innerHTML = "Your Guesses so far: ";
         }
         
         
@@ -231,7 +188,6 @@ function startGame(){
         if (status == "won"){
             document.getElementById("Body1").style.backgroundSize = "100% 100%";
             var winImage = "url('"+allPlaces[randomNum][2]+"')";
-            console.log(winImage);
             document.getElementById("Body1").style.backgroundImage = winImage;
             document.getElementById("ticker").innerHTML = "WINNER!!!";
             setTimeout(function(){document.getElementById("ticker").innerHTML = "Let's play again!"},3000);
