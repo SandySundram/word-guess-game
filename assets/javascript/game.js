@@ -139,8 +139,9 @@ function startGame(){
             document.querySelector("#wins").innerHTML = gameWins;
             var msg = new SpeechSynthesisUtterance(allPlaces[randomNum][0]);
             window.speechSynthesis.speak(msg);
+            resetVals();
             tickerText("won");
-            setTimeout(resetVals, 5000);            
+            // setTimeout(resetVals, 5000);            
         }
 
         //if typed word is not present in secret word, reduce guesses left by 1
@@ -183,7 +184,7 @@ function startGame(){
         }
         if (status == "hint"){
             setTimeout(function(){document.getElementById("ticker").innerHTML = "Hint: " + allPlaces[randomNum][1]},3000);
-            document.getElementById("ticker").innerHTML = "Yikes!! Only 3 guesses left. Here is a hint...";
+            document.getElementById("ticker").innerHTML = "Yikes!! Only 1 guess left. Here is a hint...";
         }
         if (status == "won"){
             document.getElementById("Body1").style.backgroundSize = "100% 100%";
