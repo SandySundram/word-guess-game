@@ -139,8 +139,8 @@ function startGame(){
             document.querySelector("#wins").innerHTML = gameWins;
             var msg = new SpeechSynthesisUtterance(allPlaces[randomNum][0]);
             window.speechSynthesis.speak(msg);
-            resetVals();
             tickerText("won");
+            resetVals();
             // setTimeout(resetVals, 5000);            
         }
 
